@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Clock(props) {
   const [time, setTime] = useState(getTime)
+ 
 
   function getTime() {
     return new Date()
@@ -20,6 +21,12 @@ export default function Clock(props) {
     Not: Aşağıdaki satırların üstünde veya altında herhangi bir kod değiştirmenize veya eklemenize gerek yoktur. Verileri doğru şekilde güncellerseniz, alt satırın altındaki kod otomatik olarak ayrıştırılacak ve görüntülenecektir, bu nedenle görevi tamamlamak için yapmanız gereken başka bir şey yok  */
 
   /* ------------- Kodunuzu aşağıya yazın ---------------------------------------*/
+ useEffect(()=>{
+  const intervalId = setInterval(() => {
+    setTime(getTime)
+  },1000)
+  return ()=>clearInterval(intervalId)
+ },[])
 
   /* ------------- Kodunuzu yukarıya yazın -------------------------------------*/
 
